@@ -1,14 +1,90 @@
-<form id="post-form">
-    {% csrf_token %}
-    <input type="text" id="link" name="link" />
-    <input type="submit" />
-</form>
-<h2></h2>
+<!DOCTYPE html>
+<html lang=fr>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Youtube To Mp3</title>
+    <!--[if lt IE 9]>
+				<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+				<![endif]-->
+    <link href="https://onlinevideoconverter.com/static/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://onlinevideoconverter.com/static/website.min.css?v=42.501" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.5.2/jquery.timeago.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script type="text/javascript" src="https://onlinevideoconverter.com/static/jquery.timeago.fr.js"></script>
+    <script type="text/javascript" src="https://onlinevideoconverter.com/static/website.min.js?v=42.500"></script>
+  </head>
+  <body id="lang_fr">
+    <div class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 hidden-xs">
+            <div class="logo">
+              <br>
+              <br>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="urlconverter">
+      <div id="stepConvert">
+        <div class="urlconverter-section-1">
+          <div class="container">
+            <div class="urlconverter-section-left-1">
+              <div class="container">
+                <div class='urlconverter-section-1-1'>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="urlconverter-section-1-title">
+                        <h1>Convertissez des vidéos depuis YouTube en MP3 et d’autres formats</h1>
+                      </div>
+					  <form id="post-form">
+					  {% csrf_token %}
+                      <ul class="urlconverter-section-1-1-form">
+                        <li>
+                          <input type="text" id="link" name="link" class="textbox" placeholder="Enter Youtube Url Here"/>
+                        </li>
+						<li>
+                          <input type="submit" class="start-button"/>
+                        </li>
+                      </ul>
+                      </form>					  
+                    </div>
+                  </div>
+                  <h1> Please Wait It May Take Some Time When Converting Yt To Mp3 Avg Is 15s for 3min video</h1>
+				  <h2 style="color:orange; font-size: 1.3em;"></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <p>&copy; Yt To Mp3 - Dhia Bm.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).on('submit', '#post-form', function(e){
         e.preventDefault();
-
+        $('h1').css("display","block"); // SHOW LOADER
         $.ajax({
             type:'POST',
             url:'get-link',
@@ -17,6 +93,7 @@
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
             },
             success: function(data){
+                $('h1').css("display","none"); // HIDE LOADER
                 $('h2').html(data)
             }
 
@@ -24,3 +101,6 @@
     });
 
 </script>
+
+  </body>
+</html>
